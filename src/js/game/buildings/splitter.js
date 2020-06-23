@@ -134,8 +134,7 @@ export class MetaSplitterBuilding extends MetaBuilding {
 
                 break;
             }
-            case enumSplitterVariants.compact:
-            case enumSplitterVariants.compactInverse: {
+            case enumSplitterVariants.compact: {
                 entity.components.ItemAcceptor.setSlots([
                     {
                         pos: new Vector(0, 0),
@@ -143,11 +142,7 @@ export class MetaSplitterBuilding extends MetaBuilding {
                     },
                     {
                         pos: new Vector(0, 0),
-                        directions: [
-                            variant === enumSplitterVariants.compactInverse
-                                ? enumDirection.left
-                                : enumDirection.right,
-                        ],
+                        directions: [enumDirection.right],
                     },
                 ]);
 
@@ -158,10 +153,7 @@ export class MetaSplitterBuilding extends MetaBuilding {
                     },
                     {
                         pos: new Vector(0, 0),
-                        direction:
-                            variant === enumSplitterVariants.compactInverse
-                                ? enumDirection.right
-                                : enumDirection.left,
+                        direction: enumDirection.left,
                     },
                 ]);
 
@@ -172,10 +164,43 @@ export class MetaSplitterBuilding extends MetaBuilding {
                     },
                     {
                         pos: new Vector(0, 0),
-                        direction:
-                            variant === enumSplitterVariants.compactInverse
-                                ? enumDirection.right
-                                : enumDirection.left,
+                        direction: enumDirection.left,
+                    },
+                ];
+
+                break;
+            }
+            case enumSplitterVariants.compactInverse: {
+                entity.components.ItemAcceptor.setSlots([
+                    {
+                        pos: new Vector(0, 0),
+                        directions: [enumDirection.bottom],
+                    },
+                    {
+                        pos: new Vector(0, 0),
+                        directions: [enumDirection.top],
+                    },
+                ]);
+
+                entity.components.ItemEjector.setSlots([
+                    {
+                        pos: new Vector(0, 0),
+                        direction: enumDirection.left,
+                    },
+                    {
+                        pos: new Vector(0, 0),
+                        direction: enumDirection.right,
+                    },
+                ]);
+
+                entity.components.ItemAcceptor.beltUnderlays = [
+                    {
+                        pos: new Vector(0, 0),
+                        direction: enumDirection.top,
+                    },
+                    {
+                        pos: new Vector(0, 0),
+                        direction: enumDirection.left,
                     },
                 ];
 
